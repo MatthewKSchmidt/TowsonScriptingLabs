@@ -1,0 +1,99 @@
+
+<html>
+    <head>
+        <title>Animate All of the Heads!...and Tux</title>
+		<meta charset="utf-8" />
+
+        <!-- Include the animation script -->
+        <script type="text/javascript" src="animate.js"></script>
+
+        <script type="text/javascript">
+            /* Called from "onload" on the body of the document (see the <body> tag) 
+             * so all of the  objects are initialized. Think of this as a "constructor"
+             * for the entire page.
+             * 
+             * Also, the "document" object, being automatically defined on a "per-page"
+             * basis, makes for an ideal location to store values which need to be
+             * accessed from multiple functions on the same page.  (You can't easilly
+             * "return" values to HTML and then pass them back to a script later,
+             * so we have to store them as part of the page.)
+             */
+			 
+            function start() {
+                // Make the array part of the "document" for easy access everywhere.
+                document.animObj = {};
+
+                // Create an array element holding the animator object.
+                document.animObj["OBJ1"] = new animator("OBJ1", 1, 1, 100);
+				document.animObj["OBJ2"] = new animator("OBJ2", -1, -1, 100);
+				document.animObj["OBJ3"] = new animator("OBJ3", 0, 0, 100);
+            }
+
+            /** Start the animation of a given named object **/
+            function startObj(id) {
+				let theObj = document.animObj[id];
+                theObj.start("right");
+            }
+			
+			function startAll() {
+				for (objId in document.animObj) {
+					startObj(objId);
+				}
+			}
+			
+			function move(id, direction) {
+				let obj = document.animObj[id];
+				obj.start(direction);
+			}
+			
+			function stop(id) {
+				document.animObj[id].stop();
+			}
+			
+        </script> 
+    </head>
+
+
+    <!-- The body of the document. (Calls "start()" once the body is fully loaded into the browser). -->
+    <body onload="start()">
+	
+        </div>
+		
+		<div id="OBJ1" style="position:absolute; top:350px; left:100px;">
+            <img width="120" height="120" src="tux.png" alt="Linux -- No good Linus Torvalds head pic :(">
+        </div>
+		
+		<div id="OBJ2" style="position:absolute; top:75px; left:225px;">
+            <img width="120" height="120" src="bill.png" alt="Bill Gates">
+        </div>
+
+        </div>
+		
+		<div id="OBJ3" style="position:absolute; top:150px; left:400px;">
+            <img width="120" height="120" src="steve.png" alt="Steve Jobs">
+        </div>
+		
+	<!-- ALL OBJECTS CONTROL CONTROLS -->
+		<input value="Start All!!!"  type="button" onclick="startAll()">
+		<input value="Stop All!!!"  type="button" onclick="stopAll('OBJ1')"><br>
+
+	<!-- OBJECT ONE CONTROLS -->
+		<input value="Move OBJ1 Left" type="button" onclick="move('OBJ1', 'left');">
+		<input value="Move OBJ1 Right" type="button" onclick="move('OBJ1', 'right');">
+		<input value="Move OBJ1 Up" type="button" onclick="move('OBJ1', 'up');">
+		<input value="Move OBJ1 Down" type="button" onclick="move('OBJ1', 'down');"><br>
+
+	<!-- OBJECT TWO CONTROLS -->
+		<input value="Move OBJ2 Left" type="button" onclick="move('OBJ2', 'left');">
+		<input value="Move OBJ2 Right" type="button" onclick="move('OBJ2', 'right');">
+		<input value="Move OBJ2 Up" type="button" onclick="move('OBJ2', 'up');">
+		<input value="Move OBJ2 Down" type="button" onclick="move('OBJ2', 'down');"><br>
+
+	<!-- OBJECT THREE CONTROLS -->	
+		<input value="Move OBJ3 Left" type="button" onclick="move('OBJ3', 'left');">
+		<input value="Move OBJ3 Right" type="button" onclick="move('OBJ3', 'right');">
+		<input value="Move OBJ3 Up" type="button" onclick="move('OBJ3', 'up');">
+		<input value="Move OBJ3 Down" type="button" onclick="move('OBJ3', 'down');">
+    </body>
+	
+</html>
