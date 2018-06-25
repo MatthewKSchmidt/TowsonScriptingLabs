@@ -1,3 +1,3 @@
 Second assignment from ITEC 345 - Scripting Languages
 This javascript code will allow the user to manipulate objects in their web browser by clicking on buttons. 
-Featuring Bill Gates, Steve Jobs, and Tux. 
+The objects in the code are referencing images stored locally on my PC, these objects will need to be subsituted in order for it to properly display. 
