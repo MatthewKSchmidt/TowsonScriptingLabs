@@ -1,1 +1,2 @@
 Script created to use fping to find hosts that are up, then using nmap to get information on them.
+usage: ./scan.sh alive.txt
